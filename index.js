@@ -1136,7 +1136,7 @@ const ed = 'RUR0dW5uZWw=';
  * @returns {string}
  */
 function getConfig(userIDs, hostName) {
-	const commonUrlPart = `?encryption=none&security=tls&sni=${hostName}&fp=randomized&type=ws&host=${hostName}&path=%2F%3Fed%3D2048#${hostName}`;
+	const commonUrlPart = `?encryption=none&security=tls&sni=${hostName}&fp=randomized&type=ws&host=${hostName}&path=%2F%3Fed%3D2560#${hostName}`;
 
 	// Split the userIDs into an array
 	const userIDArray = userIDs.split(",");
@@ -1355,9 +1355,9 @@ const HttpsPort = new Set([443, 8443, 2053, 2096, 2087, 2083]);
 
 function GenSub(userID_path, hostname) {
 	const userIDArray = userID_path.includes(',') ? userID_path.split(',') : [userID_path];
-	const randomPath = () => '/' + Math.random().toString(36).substring(2, 15) + '?ed=2048';
+	const randomPath = () => '/' + Math.random().toString(36).substring(2, 15) + '?ed=2560';
 	const commonUrlPartHttp = `?encryption=none&security=none&fp=random&type=ws&host=${hostname}&path=${encodeURIComponent(randomPath())}#`;
-	const commonUrlPartHttps = `?encryption=none&security=tls&sni=${hostname}&fp=random&type=ws&host=${hostname}&path=%2F%3Fed%3D2048#`;
+	const commonUrlPartHttps = `?encryption=none&security=tls&sni=${hostname}&fp=random&type=ws&host=${hostname}&path=%2F%3Fed%3D2560#`;
 
 	const result = userIDArray.flatMap((userID) => {
 		const PartHttp = Array.from(HttpPort).flatMap((port) => {
